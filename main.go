@@ -103,7 +103,7 @@ func main() {
 		mainMarkup.Row(mainFikkh),
 	)
 
-	akidaMarkup.Reply(
+	akidaMarkup.Inline(
 		akidaMarkup.Row(akidaTo, akidaChp),
 		akidaMarkup.Row(akidaSho),
 		akidaMarkup.Row(akidaOs),
@@ -118,14 +118,14 @@ func main() {
 		selector.Row(selectorBack, selectorBackAtAllBtn),
 	)
 
-	fikkhMarkup.Reply(
+	fikkhMarkup.Inline(
 		fikkhMarkup.Row(fikkhBrak, fikkhJihad),
 		fikkhMarkup.Row(fikkhClearing, fikkhWorship),
 		fikkhMarkup.Row(fikkhFow, fikkhFinance),
 		selector.Row(selectorBack, selectorBackAtAllBtn),
 	)
 
-	selector.Reply(
+	selector.Inline(
 		selector.Row(selectorBack, selectorBackAtAllBtn),
 	)
 
