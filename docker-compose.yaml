@@ -12,7 +12,7 @@ services:
     networks:
       - shared
     ports:
-      - 5432:5432
+      - 5439:5432
 
   bot:
     container_name: bot
