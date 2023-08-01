@@ -1,4 +1,4 @@
-module AbuSolihStorager
+module github.com/cothromachd/maktabuAbuSolih
 
 go 1.20
 

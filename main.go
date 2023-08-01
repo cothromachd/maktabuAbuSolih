@@ -1,13 +1,13 @@
 package main
 
 import (
-	"AbuSolihStorager/repo"
 	"fmt"
+	"github.com/cothromachd/maktabuAbuSolih/repo"
 	"log"
 	"os"
 	"time"
 
-	"AbuSolihStorager/migrations"
+	"github.com/cothromachd/maktabuAbuSolih/migrations"
 
 	tele "gopkg.in/telebot.v3"
 )
@@ -17,10 +17,10 @@ var (
 	какой раздел тебе нужен?`
 	m = make(map[string][2]any)
 	//mFile = make(map[string]*tele.Document)
-	pgUser = os.Getenv("POSTGRES_USER")
+	pgUser     = os.Getenv("POSTGRES_USER")
 	pgPassword = os.Getenv("POSTGRES_PASSWORD")
-	pgDb = os.Getenv("POSTGRES_DB")
-	token = os.Getenv("TOKEN") // postgres://postgres:@localhost:5432/maktabu_bot
+	pgDb       = os.Getenv("POSTGRES_DB")
+	token      = os.Getenv("TOKEN") // postgres://postgres:@localhost:5432/maktabu_bot
 )
 
 func main() {
@@ -2286,7 +2286,6 @@ func main() {
 			return err
 		}
 
-
 		pdf := &tele.Document{File: tele.FromDisk("./media/Требование знаний/Рекомендации читателю.pdf")}
 		pdf.FileName = "Рекомендации читателю.pdf"
 		return c.Send(pdf)
@@ -2631,7 +2630,7 @@ func main() {
 		if err != nil {
 			return err
 		}
-		
+
 		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Я хочу покаяться.pdf")}
 		pdf.FileName = "Я хочу покаяться.pdf"
 		return c.Send(pdf)
@@ -2810,7 +2809,7 @@ func main() {
 		if err != nil {
 			return err
 		}
-		
+
 		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/EQAMO Твой хиджаб, о мусульманка! Абдур Разак аль Бадр.pdf")}
 		pdf.FileName = "EQAMO Твой хиджаб, о мусульманка! Абдур Разак аль Бадр.pdf"
 		return c.Send(pdf)
