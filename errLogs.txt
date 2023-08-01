@@ -1,0 +1,8 @@
+2023/08/01 22:25:30 main.go:48: telegram: Not Found (404)
+2023/08/01 22:28:46 main.go:48: telegram: Not Found (404)
+2023/08/01 22:29:28 storage.go:16: cannot parse `postgres://khalidmagnificent:xxxxxx@localhost:5432/maktabu_users%!(EXTRA string=, string=, string=)`: failed to parse as URL (parse "postgres://khalidmagnificent:190204@localhost:5432/maktabu_users%!(EXTRA string=, string=, string=)": invalid URL escape "%!(")
+2023/08/01 22:30:33 main.go:42: failed to connect to `host=localhost user=khalidmagnificent database=maktabu_users`: tls error (server refused TLS connection)
+2023/08/01 22:30:38 main.go:42: failed to connect to `host=localhost user=khalidmagnificent database=maktabu_users`: hostname resolving error (lookup localhost: no such host)
+2023/08/01 22:30:38 main.go:42: failed to connect to `host=localhost user=khalidmagnificent database=maktabu_users`: hostname resolving error (lookup localhost: no such host)
+2023/08/01 22:33:00 main.go:42: failed to connect to `host=localhost user=khalidmagnificent database=maktabu_users`: server error (FATAL: database "maktabu_users" does not exist (SQLSTATE 3D000))
+2023/08/01 22:33:28 main.go:42: ERROR: relation "users" does not exist (SQLSTATE 42P01)

@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 190204
+      POSTGRES_DB: maktabu_bot
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - shared
+    ports:
+      - 5432:5432
+
+  bot:
+    container_name: bot
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 190204
+      POSTGRES_DB: maktabu_bot
+      TOKEN: 6088172429:AAE3DZF6abqLO-T3k50H5FODg6yi__NWqeQ
+    networks:
+      - shared
+    depends_on:
+      - db
+networks:
+  shared:
+    driver: bridge
+volumes:
+  db_data:
