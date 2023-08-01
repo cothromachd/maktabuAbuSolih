@@ -50,13 +50,13 @@ func main() {
 		log.Fatal(err)
 	}
 
-	storage := repo.New(pgConn, logger)
-
 	err = migrations.Migrate(pgConn)
 	if err != nil {
 		logger.Println(err)
 		log.Fatal(err)
 	}
+
+	storage := repo.New(pgConn, logger)
 
 	var (
 		mainMarkup = &tele.ReplyMarkup{ResizeKeyboard: true}
