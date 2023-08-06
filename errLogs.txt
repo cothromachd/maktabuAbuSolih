@@ -6,3 +6,4 @@
 2023/08/01 22:30:38 main.go:42: failed to connect to `host=localhost user=khalidmagnificent database=maktabu_users`: hostname resolving error (lookup localhost: no such host)
 2023/08/01 22:33:00 main.go:42: failed to connect to `host=localhost user=khalidmagnificent database=maktabu_users`: server error (FATAL: database "maktabu_users" does not exist (SQLSTATE 3D000))
 2023/08/01 22:33:28 main.go:42: ERROR: relation "users" does not exist (SQLSTATE 42P01)
+2023/08/06 17:48:03 main.go:50: telegram: Not Found (404)

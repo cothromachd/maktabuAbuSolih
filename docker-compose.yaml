@@ -24,6 +24,8 @@ services:
       POSTGRES_PASSWORD: 190204
       POSTGRES_DB: maktabu_bot
       TOKEN: 6088172429:AAE3DZF6abqLO-T3k50H5FODg6yi__NWqeQ
+    volumes:
+      - bot_data:/bot_data
     networks:
       - shared
     depends_on:
@@ -33,3 +35,4 @@ networks:
     driver: bridge
 volumes:
   db_data:
+  bot_data:

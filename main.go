@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/cothromachd/maktabuAbuSolih/repo"
 	"log"
 	"os"
 	"time"
+
+	"github.com/cothromachd/maktabuAbuSolih/repo"
 
 	"github.com/cothromachd/maktabuAbuSolih/migrations"
 
@@ -49,6 +50,21 @@ func main() {
 		logger.Println(err)
 		log.Fatal(err)
 	}
+
+	duration := 5 * time.Second
+	interval := 100 * time.Millisecond
+	animationChars := []string{"-", "\\", "|", "/"}
+
+	startTime := time.Now()
+
+	for time.Since(startTime) < duration {
+		for _, char := range animationChars {
+			fmt.Printf("\rloading... %s", char)
+			time.Sleep(interval)
+		}
+	}
+
+	fmt.Println("wait for db done")
 
 	err = migrations.Migrate(pgConn)
 	if err != nil {
@@ -252,7 +268,7 @@ func main() {
 		ShoMarkup  = &tele.ReplyMarkup{ResizeKeyboard: true}
 		ShoShom    = ShoMarkup.Text("Шесть основ матн")
 		ShoShoShad = ShoMarkup.Text("Шесть основ шарх Абу Джабир")
-		ShoSharab  = ShoMarkup.Text("Шесть основ шарх АдбуРразак аль-Бадр")
+		ShoSharab  = ShoMarkup.Text("Шесть основ шарх АбдуРразак аль-Бадр")
 		ShoShoshf  = ShoMarkup.Text("Шесть основ шарх Фаузан")
 
 		akidaOs    = akidaMarkup.Text("Отведение сомнений")
@@ -330,7 +346,7 @@ func main() {
 
 		akidaPkpa       = akidaMarkup.Text("Полезные книги по акыде")
 		PkpaMarkup      = &tele.ReplyMarkup{ResizeKeyboard: true}
-		PkpaPisaf       = PkpaMarkup.Text("«Пользы из суры «аль-Фатиха»»")
+		PkpaPisaf       = PkpaMarkup.Text("«Пользы из суры \"аль-Фатиха\"»")
 		PkpaAsas        = PkpaMarkup.Text("Акыда Суфьяна ас-Саури")
 		PkpaAsu         = PkpaMarkup.Text("Акыда Суфьяна Уйейна")
 		PkpaKasKhak     = PkpaMarkup.Text("Китаб ас-Сунна Харб аль-Кирмани")
@@ -756,7 +772,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/Три основы избранные разъяснения.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/Три_основы_избранные_разъяснения.pdf")}
 		pdf.FileName = "Три основы избранные разъяснения.pdf"
 		return c.Send(pdf)
 	})
@@ -767,7 +783,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/ТРИ ОСНОВЫ МАТН.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/ТРИ_ОСНОВЫ_МАТН.pdf")}
 		pdf.FileName = "ТРИ ОСНОВЫ МАТН.pdf"
 		return c.Send(pdf)
 	})
@@ -778,7 +794,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/Три основы шарх ибн Баз.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/Три_основы_шарх_ибн_Баз.pdf")}
 		pdf.FileName = "Три основы шарх ибн Баз.pdf"
 		return c.Send(pdf)
 	})
@@ -789,8 +805,8 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/Три основы шарх ибн Касим.pdf")}
-		pdf.FileName = "Три основы шарх ибн Касим.pdf"
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/Три_основы_шарх_ибн_Касим.pdf")}
+		pdf.FileName = "Три основы шарх ибн_Касим.pdf"
 		return c.Send(pdf)
 	})
 
@@ -800,7 +816,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/Три основы шарх ибн Усаймин.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/Три_основы_шарх_ибн_Усаимин.pdf")}
 		pdf.FileName = "Три основы шарх ибн Усаймин.pdf"
 		return c.Send(pdf)
 	})
@@ -811,7 +827,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/Три основы шарх Усойми.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/Три_основы_шарх_Усоими.pdf")}
 		pdf.FileName = "Три основы шарх Усойми.pdf"
 		return c.Send(pdf)
 	})
@@ -822,7 +838,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три Основы/Три основы шарх Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Три_Основы/Три_основы_шарх_Фаузан.pdf")}
 		pdf.FileName = "Три основы шарх Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -842,7 +858,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/4 правила - аль-Шейх.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/4_правила_-_аль-Шеих.docx")}
 		docx.FileName = "4 правила - аль-Шейх.docx"
 		return c.Send(docx)
 	})
@@ -853,7 +869,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/4 правила - Усайми.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/4_правила_-_Усаими.docx")}
 		docx.FileName = "4 правила - Усайми.docx"
 		return c.Send(docx)
 	})
@@ -864,7 +880,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/4 правила шарх аль-Люхайдан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/4_правила_шарх_аль-Люхаидан.pdf")}
 		pdf.FileName = "4 правила шарх аль-Люхайдан.pdf"
 		return c.Send(pdf)
 	})
@@ -875,7 +891,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила избранные шурухи.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_избранные_шурухи.pdf")}
 		pdf.FileName = "Четыре правила избранные шурухи.pdf"
 		return c.Send(pdf)
 	})
@@ -886,7 +902,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила матн.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_матн.pdf")}
 		pdf.FileName = "Четыре правила матн.pdf"
 		return c.Send(pdf)
 	})
@@ -897,7 +913,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила шарх АбдуРРахман аль-Баррок.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_шарх_АбдуРРахман_аль-Баррок.pdf")}
 		pdf.FileName = "Четыре правила шарх АбдуРРахман аль-Баррок.pdf"
 		return c.Send(pdf)
 	})
@@ -908,7 +924,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила шарх Абу Джабир.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_шарх_Абу_Джабир.pdf")}
 		pdf.FileName = "Четыре правила шарх Абу Джабир.pdf"
 		return c.Send(pdf)
 	})
@@ -919,7 +935,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила шарх ибн Баз.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_шарх_ибн_Баз.pdf")}
 		pdf.FileName = "Четыре правила шарх ибн Баз.pdf"
 		return c.Send(pdf)
 	})
@@ -930,7 +946,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила шарх Солих али-Шейх.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_шарх_Солих_али-Шеих.pdf")}
 		pdf.FileName = "Четыре правила шарх Солих али-Шейх.pdf"
 		return c.Send(pdf)
 	})
@@ -941,7 +957,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре правила/Четыре правила шарх Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Четыре_правила/Четыре_правила_шарх_Фаузан.pdf")}
 		pdf.FileName = "Четыре правила шарх Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -956,25 +972,25 @@ func main() {
 	})
 
 	b.Handle(&ShoShom, func(c tele.Context) error {
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть основ/Шесть основ матн.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть_основ/Шесть_основ_матн.pdf")}
 		pdf.FileName = "Шесть основ матн.pdf"
 		return c.Send(pdf)
 	})
 
 	b.Handle(&ShoShoShad, func(c tele.Context) error {
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть основ/Шесть основ шарх Абу Джабир.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть_основ/Шесть_основ_шарх_Абу_Джабир.pdf")}
 		pdf.FileName = "Шесть основ шарх Абу Джабир.pdf"
 		return c.Send(pdf)
 	})
 
 	b.Handle(&ShoSharab, func(c tele.Context) error {
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть основ/Шесть основ шарх АдбуРразак аль-Бадр.pdf")}
-		pdf.FileName = "Шесть основ шарх АдбуРразак аль-Бадр.pdf"
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть_основ/Шесть_основ_шарх_АбдуРразак_аль-Бадр.pdf")}
+		pdf.FileName = "Шесть основ шарх АбдуРразак аль-Бадр.pdf"
 		return c.Send(pdf)
 	})
 
 	b.Handle(&ShoShoshf, func(c tele.Context) error {
-		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть основ/Шесть основ шарх Фаузан.doc")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/шесть_основ/Шесть_основ_шарх_Фаузан.doc")}
 		docx.FileName = "Шесть основ шарх Фаузан.doc"
 		return c.Send(docx)
 	})
@@ -994,7 +1010,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение сомнений/Отведение разъяснения ученых.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение_сомнении/Отведение_разъяснения_ученых.pdf")}
 		pdf.FileName = "Отведение разъяснения ученых.pdf"
 		return c.Send(pdf)
 	})
@@ -1005,7 +1021,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение сомнений/Отведение сомнений матн.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение_сомнении/Отведение_сомнении_матн.pdf")}
 		pdf.FileName = "Отведение сомнений матн.pdf"
 		return c.Send(pdf)
 	})
@@ -1016,7 +1032,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение сомнений/Отведение сомнений шарх Гунейман.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение_сомнении/Отведение_сомнении_шарх_Гунеиман.pdf")}
 		pdf.FileName = "Отведение сомнений шарх Гунейман.pdf"
 		return c.Send(pdf)
 	})
@@ -1027,7 +1043,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение сомнений/Отведение сомнений шарх Солих али-Шейх.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Отведение_сомнении/Отведение_сомнении_шарх_Солих_али-Шеих.pdf")}
 		pdf.FileName = "Отведение сомнений шарх Солих али-Шейх.pdf"
 		return c.Send(pdf)
 	})
@@ -1047,7 +1063,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия аль-Бадр.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_аль-Бадр.pdf")}
 		pdf.FileName = "Книга единобожия аль-Бадр.pdf"
 		return c.Send(pdf)
 	})
@@ -1058,7 +1074,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия ас-Саади.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_ас-Саади.pdf")}
 		pdf.FileName = "Книга единобожия ас-Саади.pdf"
 		return c.Send(pdf)
 	})
@@ -1069,7 +1085,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия короткий шарх Солиха али-Шейх.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_короткии_шарх_Солиха_али-Шеих.pdf")}
 		pdf.FileName = "Книга единобожия короткий шарх Солиха али-Шейх.pdf"
 		return c.Send(pdf)
 	})
@@ -1080,7 +1096,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия короткий шарх Фаузана .pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_короткии_шарх_Фаузана.pdf")}
 		pdf.FileName = "Книга единобожия короткий шарх Фаузана.pdf"
 		return c.Send(pdf)
 	})
@@ -1091,7 +1107,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия матн.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_матн.pdf")}
 		pdf.FileName = "Книга единобожия матн.pdf"
 		return c.Send(pdf)
 	})
@@ -1102,7 +1118,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия шарх АбдуРрахман али-Шейх.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_шарх_АбдуРрахман_али-Шеих.pdf")}
 		pdf.FileName = "Книга единобожия шарх АбдуРрахман али-Шейх.pdf"
 		return c.Send(pdf)
 	})
@@ -1113,7 +1129,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия шарх Абу Джабир.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_шарх_Абу_Джабир.pdf")}
 		pdf.FileName = "Книга единобожия шарх Абу Джабир.pdf"
 		return c.Send(pdf)
 	})
@@ -1124,7 +1140,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга единобожия/Книга единобожия шарх ибн Атик.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книга_единобожия/Книга_единобожия_шарх_ибн_Атик.pdf")}
 		pdf.FileName = "Книга единобожия шарх ибн Атик.pdf"
 		return c.Send(pdf)
 	})
@@ -1144,7 +1160,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль ислям/10 пунктов аннулирующих ислам шарх Баррак.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль_ислям/10_пунктов_аннулирующих_ислам_шарх_Баррак.pdf")}
 		pdf.FileName = "10 пунктов аннулирующих ислам шарх Баррак.pdf"
 		return c.Send(pdf)
 	})
@@ -1155,7 +1171,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль ислям/10 пунктов аннулирующих ислам шарх Роджихи.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль_ислям/10_пунктов_аннулирующих_ислам_шарх_Роджихи.pdf")}
 		pdf.FileName = "10 пунктов аннулирующих ислам шарх Роджихи.pdf"
 		return c.Send(pdf)
 	})
@@ -1166,7 +1182,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль ислям/10 пунктов аннулирующих ислам — Шейх Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль_ислям/10_пунктов_аннулирующих_ислам_—_Шеих_Фаузан.pdf")}
 		pdf.FileName = "10 пунктов аннулирующих ислам — Шейх Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -1177,7 +1193,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль ислям/Науакыд - Фаузан.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Акыда/Навакыдуль_ислям/Науакыд_-_Фаузан.docx")}
 		docx.FileName = "Науакыд - Фаузан.docx"
 		return c.Send(docx)
 	})
@@ -1197,7 +1213,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/АКЪИДА ВАСАТИЯ САЛИХ ФАУЗАН.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/АКЪИДА_ВАСАТИЯ_САЛИХ_ФАУЗАН.pdf")}
 		pdf.FileName = "АКЪИДА ВАСАТИЯ САЛИХ ФАУЗАН.pdf"
 		return c.Send(pdf)
 	})
@@ -1208,7 +1224,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Акыда ат-Тахавия шарх ибн аби аль-Изз.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Акыда_ат-Тахавия_шарх_ибн_аби_аль-Изз.pdf")}
 		pdf.FileName = "Акыда ат-Тахавия шарх ибн аби аль-Изз.pdf"
 		return c.Send(pdf)
 	})
@@ -1219,7 +1235,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Блеск убеждений Шарх шейха аль Усеймин.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Блеск_убеждении_Шарх_шеха_аль_Усеимин.pdf")}
 		pdf.FileName = "Блеск убеждений Шарх шейха аль Усеймин.pdf"
 		return c.Send(pdf)
 	})
@@ -1230,7 +1246,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Идеология тафуида.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Идеология_тафуида.pdf")}
 		pdf.FileName = "Идеология тафуида.pdf"
 		return c.Send(pdf)
 	})
@@ -1241,7 +1257,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Коранический метод познания атрибутов Аллаха Аш Шанкыти.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Кораническии_метод_познания_атрибутов_Аллаха_Аш_Шанкыти.pdf")}
 		pdf.FileName = "Коранический метод познания атрибутов Аллаха Аш Шанкыти.pdf"
 		return c.Send(pdf)
 	})
@@ -1252,7 +1268,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Прекрасные имена Кахтани.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Прекрасные_имена_Кахтани.pdf")}
 		pdf.FileName = "Прекрасные имена Кахтани.pdf"
 		return c.Send(pdf)
 	})
@@ -1263,7 +1279,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Разногласия в словах и опровержение джахмита.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Разногласия_в_словах_и_опровержение_джахмита.pdf")}
 		pdf.FileName = "Разногласия в словах и опровержение джахмита.pdf"
 		return c.Send(pdf)
 	})
@@ -1274,7 +1290,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Середийность в вероубеждений.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Середииность_в_вероубеждении.pdf")}
 		pdf.FileName = "Середийность в вероубеждений.pdf"
 		return c.Send(pdf)
 	})
@@ -1285,7 +1301,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда в именах и атрибутах/Таухид аль-асма ва-сыфат в общем.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Таухид_аль-асма_ва-сыфат_в_общем.pdf")}
 		pdf.FileName = "Таухид аль-асма ва-сыфат в общем.pdf"
 		return c.Send(pdf)
 	})
@@ -1305,7 +1321,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос имана/аль-Фурук.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос_имана/аль-Фурук.pdf")}
 		pdf.FileName = "аль-Фурук.pdf"
 		return c.Send(pdf)
 	})
@@ -1316,7 +1332,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос имана/Книга Имана ибн Таймия.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос_имана/Книга_Имана_ибн_Таимия.pdf")}
 		pdf.FileName = "Книга Имана ибн Таймия.pdf"
 		return c.Send(pdf)
 	})
@@ -1327,7 +1343,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос имана/Усулю иман ат-Тамими шарх Шейх Солих али-Шейха.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос_имана/Усулю_иман_ат-Тамими_шарх_Шейх_Солих_али-Шеиха.pdf")}
 		pdf.FileName = "Усулю иман ат-Тамими шарх Шейх Солих али-Шейха.pdf"
 		return c.Send(pdf)
 	})
@@ -1338,7 +1354,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос имана/Учёные_комитета_против_мурджиитов.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос_имана/Ученые_комитета_против_мурджиитов.pdf")}
 		pdf.FileName = "Учёные комитета против мурджиитов.pdf"
 		return c.Send(pdf)
 	})
@@ -1358,7 +1374,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Любовь и непричастность/Дружба и непричастность в исламе Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Любовь_и_непричастность/Дружба_и_непричастность_в_исламе_Фаузан.pdf")}
 		pdf.FileName = "Дружба и непричастность в исламе Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -1369,7 +1385,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Любовь и непричастность/Основы любви и непричастности.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Любовь_и_непричастность/Основы_любви_и_непричастности.pdf")}
 		pdf.FileName = "Основы любви и непричастности.pdf"
 		return c.Send(pdf)
 	})
@@ -1380,7 +1396,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Любовь и непричастность/Принцип Уаля в Исламе.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Любовь_и_непричастность/Принцип_Уаля_в_Исламе.pdf")}
 		pdf.FileName = "Принцип Уаля в Исламе.pdf"
 		return c.Send(pdf)
 	})
@@ -1400,7 +1416,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор вопроса узр биль джахль/Аяты об отсутствии оправдания.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор_вопроса_узр_биль_джахль/Аяты_об_отсутствии_оправдания.pdf")}
 		pdf.FileName = "Аяты об отсутствии оправдания.pdf"
 		return c.Send(pdf)
 	})
@@ -1411,7 +1427,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор вопроса узр биль джахль/Разбор узр биль джахль.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор_вопроса_узр_биль_джахль/Разбор_узр_биль_джахль.pdf")}
 		pdf.FileName = "Разбор узр биль джахль.pdf"
 		return c.Send(pdf)
 	})
@@ -1422,7 +1438,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор вопроса узр биль джахль/Разбор узр биль джахль 2.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор_вопроса_узр_биль_джахль/Разбор_узр_биль_джахль_2.pdf")}
 		pdf.FileName = "Разбор узр биль джахль 2.pdf"
 		return c.Send(pdf)
 	})
@@ -1433,7 +1449,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор вопроса узр биль джахль/Разбор узр биль джахль 3.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор_вопроса_узр_биль_джахль/Разбор_узр_биль_джахль_3.pdf")}
 		pdf.FileName = "Разбор узр биль джахль 3.pdf"
 		return c.Send(pdf)
 	})
@@ -1444,7 +1460,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор вопроса узр биль джахль/Разбор узр биль джахль 4.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Разбор_вопроса_узр_биль_джахль/Разбор_узр_биль_джахль_4.pdf")}
 		pdf.FileName = "Разбор узр биль джахль 4.pdf"
 		return c.Send(pdf)
 	})
@@ -1464,7 +1480,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Важные уроки.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Важные_уроки.pdf")}
 		pdf.FileName = "Важные уроки.pdf"
 		return c.Send(pdf)
 	})
@@ -1475,7 +1491,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Вероубеждение единобожия, Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Вероубеждение_единобожия,_Фаузан.pdf")}
 		pdf.FileName = "Вероубеждение единобожия, Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -1486,7 +1502,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Два свидетельства ибн Джибрин.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Два_свидетельства_ибн_Джибрин.pdf")}
 		pdf.FileName = "Два свидетельства ибн Джибрин.pdf"
 		return c.Send(pdf)
 	})
@@ -1497,7 +1513,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Доказательства Единобожия аль Бадр.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Доказательства_Единобожия_аль_Бадр.pdf")}
 		pdf.FileName = "Доказательства Единобожия аль Бадр.pdf"
 		return c.Send(pdf)
 	})
@@ -1508,7 +1524,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Основы вероучения Лялякаи.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Основы_вероучения_Лялякаи.pdf")}
 		pdf.FileName = "Основы вероучения Лялякаи.pdf"
 		return c.Send(pdf)
 	})
@@ -1519,7 +1535,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Разъяснение основых постулатов веры.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Разъяснение_основых_постулатов_веры.pdf")}
 		pdf.FileName = "Разъяснение основых постулатов веры.pdf"
 		return c.Send(pdf)
 	})
@@ -1530,7 +1546,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Религиозные новшества.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Религиозные_новшества.pdf")}
 		pdf.FileName = "Религиозные новшества.pdf"
 		return c.Send(pdf)
 	})
@@ -1541,7 +1557,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Слова единобожия АбдуРразак аль-Бадр.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Слова_единобожия_АбдуРразак_аль-Бадр.pdf")}
 		pdf.FileName = "Слова единобожия АбдуРразак аль-Бадр.pdf"
 		return c.Send(pdf)
 	})
@@ -1552,7 +1568,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Убеждения_приверженцев_сунны_и_единой_общины.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Убеждения_приверженцев_сунны_и_единой_общины.pdf")}
 		pdf.FileName = "Убеждения приверженцев сунны и единой общины.pdf"
 		return c.Send(pdf)
 	})
@@ -1563,7 +1579,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Уроки извлекаемые из Корана Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Уроки_извлекаемые_из_Корана_Фаузан.pdf")}
 		pdf.FileName = "Уроки извлекаемые из Корана Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -1574,7 +1590,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Шарх ас-Сунна Барбахари.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Шарх_ас-Сунна_Барбахари.pdf")}
 		pdf.FileName = "Шарх ас-Сунна Барбахари.pdf"
 		return c.Send(pdf)
 	})
@@ -1585,7 +1601,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги по основам акыды и манхаджа/Шарх ас-сунна (Барбахари) (2).pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Шарх_ас-сунна_(Барбахари)_(2).pdf")}
 		pdf.FileName = "Шарх ас-сунна (Барбахари) (2).pdf"
 		return c.Send(pdf)
 	})
@@ -1605,7 +1621,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/«Пользы из суры «аль-Фатиха»».pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/«Пользы_из_суры_«аль-Фатиха»».pdf")}
 		pdf.FileName = "«Пользы из суры \"аль-Фатиха\".pdf»"
 		return c.Send(pdf)
 	})
@@ -1616,7 +1632,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Акыда Суфьяна ас-Саури.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Акыда_Суфьяна_ас-Саури.pdf")}
 		pdf.FileName = "Акыда Суфьяна ас-Саури.pdf"
 		return c.Send(pdf)
 	})
@@ -1627,7 +1643,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Акыда Суфьяна Уйейна.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Акыда_Суфьяна_Уиеина.pdf")}
 		pdf.FileName = "Акыда Суфьяна Уйейна.pdf"
 		return c.Send(pdf)
 	})
@@ -1638,7 +1654,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Китаб ас-Сунна Харб аль-Кирмани.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Китаб_ас-Сунна_Харб_аль-Кирмани.pdf")}
 		pdf.FileName = "Китаб ас-Сунна Харб аль-Кирмани.pdf"
 		return c.Send(pdf)
 	})
@@ -1649,7 +1665,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/МАСАИЛЬ ДЖАХИЛИЯ ФАУЗАН.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/МАСАИЛЬ_ДЖАХИЛИЯ_ФАУЗАН.pdf")}
 		pdf.FileName = "МАСАИЛЬ ДЖАХИЛИЯ ФАУЗАН.pdf"
 		return c.Send(pdf)
 	})
@@ -1660,7 +1676,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Муфид аль-Мустафид ат-Тамими.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Муфид_аль-Мустафид_ат-Тамими.pdf")}
 		pdf.FileName = "Муфид аль-Мустафид ат-Тамими.pdf"
 		return c.Send(pdf)
 	})
@@ -1671,7 +1687,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Различия.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Различия.pdf")}
 		pdf.FileName = "Различия.pdf"
 		return c.Send(pdf)
 	})
@@ -1682,7 +1698,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Усуль ас-Сунна Имама Ахмада шарх Абу Джабир.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Усуль_ас-Сунна_Имама_Ахмада_шарх_Абу_Джабир.pdf")}
 		pdf.FileName = "Усуль ас-Сунна Имама Ахмада шарх Абу Джабир.pdf"
 		return c.Send(pdf)
 	})
@@ -1693,7 +1709,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Фетвы по столпам Ислама.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Фетвы_по_столпам_Ислама.pdf")}
 		pdf.FileName = "Фетвы по столпам Ислама.pdf"
 		return c.Send(pdf)
 	})
@@ -1704,7 +1720,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные книги по акыде/Хаия ибн Аби Давуда шарх Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Полезные_книги_по_акыде/Хаия_ибн_Аби_Давуда_шарх_Фаузан.pdf")}
 		pdf.FileName = "Хаия ибн Аби Давуда шарх Фаузан.pdf"
 		return c.Send(pdf)
 	})
@@ -1724,7 +1740,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Адаб/Женщина придерживающаяся правильного пути.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Адаб/Женщина_придерживающаяся_правильного_пути.pdf")}
 		pdf.FileName = "Женщина придерживающаяся правильного пути.pdf"
 		return c.Send(pdf)
 	})
@@ -1735,7 +1751,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Адаб/Книга благопристойности.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Адаб/Книга_благопристоиности.pdf")}
 		pdf.FileName = "Книга благопристойности.pdf"
 		return c.Send(pdf)
 	})
@@ -1768,7 +1784,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Адаб/Проблемы современной молодёжи.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Адаб/Проблемы_современнои_молодежи.pdf")}
 		pdf.FileName = "Проблемы современной молодёжи.pdf"
 		return c.Send(pdf)
 	})
@@ -1799,7 +1815,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/20_советов_моей_сестре_до_ее_выхода_замуж.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/20_советов_моеи_сестре_до_ее_выхода_замуж.pdf")}
 		pdf.FileName = "20 советов моей сестре до ее выхода замуж.pdf"
 		return c.Send(pdf)
 	})
@@ -1810,7 +1826,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Выбор друзей в Исламе.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Выбор_друзеи_в_Исламе.pdf")}
 		pdf.FileName = "Выбор друзей в Исламе.pdf"
 		return c.Send(pdf)
 	})
@@ -1843,7 +1859,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Способы увеличения имана.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Способы_увеличения_имана.pdf")}
 		pdf.FileName = "Способы увеличения имана.pdf"
 		return c.Send(pdf)
 	})
@@ -1854,7 +1870,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Табукское_послание_Провизия_переселяющегося_к_своему_Господу_Ибн_Къаййим.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Табукское_послание_Провизия_переселяющегося_к_своему_Господу_Ибн_Къаииим.pdf")}
 		pdf.FileName = "Табукское послание Провизия переселяющегося к своему Господу Ибн Къаййим.pdf"
 		return c.Send(pdf)
 	})
@@ -1865,7 +1881,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Фаваид Ибн Каййим.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Разное/Фаваид_Ибн_Каииим.pdf")}
 		pdf.FileName = "Фаваид Ибн Каййим.pdf"
 		return c.Send(pdf)
 	})
@@ -1907,7 +1923,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/40 хадисов ибн Усаймин.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/40_хадисов_ибн_Усаимин.pdf")}
 		pdf.FileName = "40 хадисов ибн Усаймин.pdf"
 		return c.Send(pdf)
 	})
@@ -1918,7 +1934,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Булуг аль-маррам.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Булуг_аль-маррам.pdf")}
 		pdf.FileName = "Булуг аль-маррам.pdf"
 		return c.Send(pdf)
 	})
@@ -1929,7 +1945,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Избранные хадисы Аль-Бухари.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Избранные_хадисы_Аль-Бухари.pdf")}
 		pdf.FileName = "Избранные хадисы Аль-Бухари.pdf"
 		return c.Send(pdf)
 	})
@@ -1940,7 +1956,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Избранные хадисы.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Избранные_хадисы.pdf")}
 		pdf.FileName = "Избранные хадисы.pdf"
 		return c.Send(pdf)
 	})
@@ -1951,7 +1967,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Пособие по терминологии хадисов.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Пособие_по_терминологии_хадисов.pdf")}
 		pdf.FileName = "Пособие по терминологии хадисов.pdf"
 		return c.Send(pdf)
 	})
@@ -1962,7 +1978,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Сады праведных.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Сады_праведных.pdf")}
 		pdf.FileName = "Сады праведных.pdf"
 		return c.Send(pdf)
 	})
@@ -1973,7 +1989,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Сахих аль-Бухари.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Сахих_аль-Бухари.pdf")}
 		pdf.FileName = "Сахих аль-Бухари.pdf"
 		return c.Send(pdf)
 	})
@@ -1984,7 +2000,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Сахих аль-Джами’ Ас-Саг1ир.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Сахих_аль-Джами'_Ас-Саг1ир.pdf")}
 		pdf.FileName = "Сахих аль-Джами’ Ас-Саг1ир.pdf"
 		return c.Send(pdf)
 	})
@@ -1995,7 +2011,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Сахих ибн Маджа.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Сахих_ибн_Маджа.pdf")}
 		pdf.FileName = "Сахих ибн Маджа.pdf"
 		return c.Send(pdf)
 	})
@@ -2006,7 +2022,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Сахих Муслим.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Сахих_Муслим.pdf")}
 		pdf.FileName = "Сахих Муслим.pdf"
 		return c.Send(pdf)
 	})
@@ -2017,7 +2033,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Сунан Абу Давуд.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Сунан_Абу_Давуд.pdf")}
 		pdf.FileName = "Сунан Абу Давуд.pdf"
 		return c.Send(pdf)
 	})
@@ -2028,7 +2044,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники хадисов/Sakhikh_al-Bukhari_Kratkoe_ikhlozhenie.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сборники_хадисов/Sakhikh_al-Bukhari_Kratkoe_ikhlozhenie.pdf")}
 		pdf.FileName = "Сахих аль-Бухари краткое изложение.pdf"
 		return c.Send(pdf)
 	})
@@ -2048,7 +2064,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Достоверная история Али и Муавии.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Достоверная_история_Али_и_Муавии.pdf")}
 		pdf.FileName = "Достоверная история Али и Муавии.pdf"
 		return c.Send(pdf)
 	})
@@ -2059,7 +2075,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Жизнеописание Пророка Мухаммада.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Жизнеописание_Пророка_Мухаммада.pdf")}
 		pdf.FileName = "Жизнеописание Пророка Мухаммада.pdf"
 		return c.Send(pdf)
 	})
@@ -2070,7 +2086,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Из жизни сподвижниц.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Из_жизни_сподвижниц.pdf")}
 		pdf.FileName = "Из жизни сподвижниц.pdf"
 		return c.Send(pdf)
 	})
@@ -2092,7 +2108,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Рассказы о пророках.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Рассказы_о_пророках.pdf")}
 		pdf.FileName = "Рассказы о пророках.pdf"
 		return c.Send(pdf)
 	})
@@ -2114,7 +2130,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Сира Пророка ﷺ Ибн Хишам.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Сира_Пророка_ﷺ_Ибн_Хишам.pdf")}
 		pdf.FileName = "Сира Пророка ﷺ Ибн Хишам.pdf"
 		return c.Send(pdf)
 	})
@@ -2125,7 +2141,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Сира Пророка ﷺ Кахтани.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Сира_Пророка_ﷺ_Кахтани.pdf")}
 		pdf.FileName = "Сира Пророка ﷺ Кахтани.pdf"
 		return c.Send(pdf)
 	})
@@ -2136,7 +2152,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Сира Пророка ﷺ Мубаракфури.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Сира_Пророка_ﷺ_Мубаракфури.pdf")}
 		pdf.FileName = "Сира Пророка ﷺ Мубаракфури.pdf"
 		return c.Send(pdf)
 	})
@@ -2147,7 +2163,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Тальха ибн Убайдуллах.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Сира/Тальха_ибн_Убаидуллах.pdf")}
 		pdf.FileName = "Тальха ибн Убайдуллах.pdf"
 		return c.Send(pdf)
 	})
@@ -2189,7 +2205,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Тафсир/Сияющее слово о науке Тафсира.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Тафсир/Сияющее_слово_о_науке_Тафсира.docx")}
 		docx.FileName = "Сияющее слово о науке Тафсира.docx"
 		return c.Send(docx)
 	})
@@ -2200,7 +2216,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир Ибн Аббаса (сура аль-Кадр).pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_Ибн_Аббаса_(сура_аль-Кадр).pdf")}
 		pdf.FileName = "Тафсир Ибн Аббаса (сура аль-Кадр).pdf"
 		return c.Send(pdf)
 	})
@@ -2211,7 +2227,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир суры аль-Кадр — ибн Касир.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_суры_аль-Кадр_—_ибн_Касир.pdf")}
 		pdf.FileName = "Тафсир суры аль-Кадр — ибн Касир.pdf"
 		return c.Send(pdf)
 	})
@@ -2222,7 +2238,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_суры_«Аль_Бакара»_аль_Усаймин.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_суры_«Аль_Бакара»_аль_Усаимин.pdf")}
 		pdf.FileName = "Тафсир суры «Аль Бакара» аль Усаймин.pdf"
 		return c.Send(pdf)
 	})
@@ -2233,7 +2249,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_Суры_Аль_Ахзаб_шейх_уль_Ислам_Ибн_Таймия.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_Суры_Аль_Ахзаб_шейх_уль_Ислам_Ибн_Таимия.pdf")}
 		pdf.FileName = "Тафсир Суры Аль Ахзаб шейх уль Ислам Ибн Таймия.pdf"
 		return c.Send(pdf)
 	})
@@ -2244,7 +2260,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Фатиха Тафсир Ибн Аббаса.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Фатиха_Тафсир_Ибн_Аббаса.pdf")}
 		pdf.FileName = "Фатиха Тафсир Ибн Аббаса.pdf"
 		return c.Send(pdf)
 	})
@@ -2264,7 +2280,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Требование знаний/Как начать приобретать знания.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Требование_знаний/Как_начать_приобретать_знания.docx")}
 		docx.FileName = "Как начать приобретать знания.docx"
 		return c.Send(docx)
 	})
@@ -2275,7 +2291,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Требование знаний/Разъяснение хадиса про требование знаний.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Требование_знаний/Разъяснение_хадиса_про_требование_знании.pdf")}
 		pdf.FileName = "Разъяснение хадиса про требование знаний.pdf"
 		return c.Send(pdf)
 	})
@@ -2286,7 +2302,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Требование знаний/Рекомендации читателю.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Требование_знаний/Рекомендации_читателю.pdf")}
 		pdf.FileName = "Рекомендации читателю.pdf"
 		return c.Send(pdf)
 	})
@@ -2297,7 +2313,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Требование знаний/Украшение искателя знаний.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Требование_знаний/Украшение_искателя_знании.pdf")}
 		pdf.FileName = "Украшение искателя знаний.pdf"
 		return c.Send(pdf)
 	})
@@ -2308,7 +2324,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Требование знаний/уникальное_пособие_для_ищущих_знания.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Требование_знаний/уникальное_пособие_для_ищущих_знания.pdf")}
 		pdf.FileName = "Уникальное пособие для ищущих знания.pdf"
 		return c.Send(pdf)
 	})
@@ -2337,7 +2353,7 @@ func main() {
 			return err
 		}
 
-		doc := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Важность потомства.doc")}
+		doc := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Важность_потомства.doc")}
 		doc.FileName = "Важность потомства.doc"
 		return c.Send(doc)
 	})
@@ -2348,7 +2364,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Подчинение мужу.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Подчинение_мужу.pdf")}
 		pdf.FileName = "Подчинение мужу.pdf"
 		return c.Send(pdf)
 	})
@@ -2359,7 +2375,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Свадьба согласно Исламу.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Свадьба_согласно_Исламу.pdf")}
 		pdf.FileName = "Свадьба согласно Исламу.pdf"
 		return c.Send(pdf)
 	})
@@ -2370,7 +2386,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Сватовство согласно исламу.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Сватовство_согласно_исламу.pdf")}
 		pdf.FileName = "Сватовство согласно исламу.pdf"
 		return c.Send(pdf)
 	})
@@ -2381,7 +2397,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Супружеские ошибки.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Супружеские_ошибки.pdf")}
 		pdf.FileName = "Супружеские ошибки.pdf"
 		return c.Send(pdf)
 	})
@@ -2392,7 +2408,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Этикет бракосочетания Альбани.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Брак/Этикет_бракосочетания_Альбани.pdf")}
 		pdf.FileName = "Этикет бракосочетания Альбани.pdf"
 		return c.Send(pdf)
 	})
@@ -2412,7 +2428,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Джихад/Вопросы войны аль-Бадр.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Джихад/Вопросы_воины_аль-Бадр.pdf")}
 		pdf.FileName = "Вопросы войны аль-Бадр.pdf"
 		return c.Send(pdf)
 	})
@@ -2432,7 +2448,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Очищение/Мухтасар аль Бувейты книга омовения.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Очищение/Мухтасар_аль_Бувеиты_книга_омовения.docx")}
 		docx.FileName = "Мухтасар аль Бувейты книга омовения.docx"
 		return c.Send(docx)
 	})
@@ -2461,7 +2477,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Закят/Закят аль-Фитр.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Закят/Закят_аль-Фитр.pdf")}
 		pdf.FileName = "Закят аль-Фитр.pdf"
 		return c.Send(pdf)
 	})
@@ -2472,7 +2488,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Закят/Закят Умар Абуль Хасан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Закят/Закят_Умар_Абуль_Хасан.pdf")}
 		pdf.FileName = "Закят.pdf"
 		return c.Send(pdf)
 	})
@@ -2492,7 +2508,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Добровольные ночные молитвы.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Добровольные_ночные_молитвы.docx")}
 		docx.FileName = "Добровольные ночные молитвы.docx"
 		return c.Send(docx)
 	})
@@ -2503,7 +2519,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Достоинство молитвы.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Достоинство_молитвы.pdf")}
 		pdf.FileName = "Достоинство молитвы.pdf"
 		return c.Send(pdf)
 	})
@@ -2525,7 +2541,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Когда дозволено прерывать молитву.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Когда_дозволено_прерывать_молитву.pdf")}
 		pdf.FileName = "Когда дозволено прерывать молитву.pdf"
 		return c.Send(pdf)
 	})
@@ -2536,7 +2552,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничный намаз.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничный_намаз.pdf")}
 		pdf.FileName = "Праздничный намаз.pdf"
 		return c.Send(pdf)
 	})
@@ -2547,7 +2563,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничный намаз — адабы и ахкамы.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничный_намаз_—_адабы_и_ахкамы.pdf")}
 		pdf.FileName = "Праздничный намаз — адабы и ахкамы.pdf"
 		return c.Send(pdf)
 	})
@@ -2569,7 +2585,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Условия молитвы шарх Аббад.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Условия_молитвы_шарх_Аббад.pdf")}
 		pdf.FileName = "Условия молитвы шарх Аббад.pdf"
 		return c.Send(pdf)
 	})
@@ -2589,7 +2605,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Мольба/Положение мольбы.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Мольба/Положение_мольбы.pdf")}
 		pdf.FileName = "Положение мольбы.pdf"
 		return c.Send(pdf)
 	})
@@ -2609,7 +2625,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Как покаяться за хулу злословие, если тот, о ком злословили, ничего.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Как_покаяться_за_хулу_злословие,_если_тот,_о_ком_злословили,_ничего.pdf")}
 		pdf.FileName = "Как покаяться за хулу злословие, если тот, о ком злословили, ничего.pdf"
 		return c.Send(pdf)
 	})
@@ -2620,7 +2636,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Покаяние и все связанное с ним.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Покаяние_и_все_связанное_с_ним.pdf")}
 		pdf.FileName = "Покаяние и все связанное с ним.pdf"
 		return c.Send(pdf)
 	})
@@ -2631,7 +2647,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Я хочу покаяться.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Покаяние/Я_хочу_покаяться.pdf")}
 		pdf.FileName = "Я хочу покаяться.pdf"
 		return c.Send(pdf)
 	})
@@ -2651,7 +2667,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Пост в 6 дней шавваля.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Пост_в_6_дней_шавваля.docx")}
 		docx.FileName = "Пост в 6 дней шавваля.docx"
 		return c.Send(docx)
 	})
@@ -2662,7 +2678,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/О посте из книги Умдат аль-Ахкам.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/О_посте_из_книги_Умдат_аль-Ахкам.pdf")}
 		pdf.FileName = "О посте из книги Умдат аль-Ахкам.pdf"
 		return c.Send(pdf)
 	})
@@ -2673,7 +2689,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Краткое пояснение положений поста Абдуль Азиз ибн Абдуллах Ар Раджихи.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Краткое_пояснение_положении_поста_Абдуль_Азиз_ибн_Абдуллах_Ар_Раджихи.pdf")}
 		pdf.FileName = "Краткое пояснение положений поста Абдуль Азиз ибн Абдуллах Ар Раджихи.pdf"
 		return c.Send(pdf)
 	})
@@ -2684,7 +2700,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Достоинство поста и ночных молитв в Рамадан Абдульазиз ибн Баз.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Достоинство_поста_и_ночных_молитв_в_Рамадан_Абдульазиз_ибн_Баз.pdf")}
 		pdf.FileName = "Достоинство поста и ночных молитв в Рамадан Абдульазиз ибн Баз.pdf"
 		return c.Send(pdf)
 	})
@@ -2704,7 +2720,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Хиджра/Положение хиджры в исламе.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Хиджра/Положение_хиджры_в_исламе.pdf")}
 		pdf.FileName = "Положение хиджры в исламе.pdf"
 		return c.Send(pdf)
 	})
@@ -2724,7 +2740,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/О каждодневных женских выделениях.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх_женщин/О_каждодневных_женских_выделениях.pdf")}
 		pdf.FileName = "О каждодневных женских выделениях.pdf"
 		return c.Send(pdf)
 	})
@@ -2735,7 +2751,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/Твой хиджаб, о мусульманка! 'Абдур.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх_женщин/Твои_хиджаб,_о_мусульманка!_'Абдур.pdf")}
 		pdf.FileName = "Твой хиджаб, о мусульманка! 'Абдур.pdf"
 		return c.Send(pdf)
 	})
@@ -2746,7 +2762,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/Хайд, нифас и истихада положение в ханбалитском фикхе.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх_женщин/Хаид,_нифас_и_истихада_положение_в_ханбалитском_фикхе.pdf")}
 		pdf.FileName = "Хайд, нифас и истихада положение в ханбалитском фикхе.pdf"
 		return c.Send(pdf)
 	})
@@ -2757,7 +2773,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/Хиджаб (‘Умар аль-‘Умар).docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх_женщин/Хиджаб_(‘Умар_аль-‘Умар).docx")}
 		docx.FileName = "Хиджаб (‘Умар аль-‘Умар).docx"
 		return c.Send(docx)
 	})
@@ -2768,8 +2784,19 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/EQAMO Постановления касающиеся верующих женщин аль Фаузан.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх_женщин/EQAMO_Постановления_касающиеся_верующих_женщин_аль_Фаузан.pdf")}
 		pdf.FileName = "EQAMO Постановления касающиеся верующих женщин аль Фаузан"
+		return c.Send(pdf)
+	})
+
+	b.Handle(&fzhTKhomArab, func(c tele.Context) error {
+		err = c.Notify(tele.UploadingDocument)
+		if err != nil {
+			return err
+		}
+
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх_женщин/EQAMO_Твои_хиджаб,_о_мусульманка!_Абдур_Разак_аль_Бадр.pdf")}
+		pdf.FileName = "EQAMO Твой хиджаб, о мусульманка! Абдур Разак аль Бадр.pdf"
 		return c.Send(pdf)
 	})
 
@@ -2788,7 +2815,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх финансовых отношений - 1 том.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх_финансовых_отношений_-_1_том.pdf")}
 		pdf.FileName = "Фикх финансовых отношений — 1 том.pdf"
 		return c.Send(pdf)
 	})
@@ -2799,20 +2826,9 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх финансовых отношений — 2 том.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх_финансовых_отношений_-_2_том.docx")}
 		docx.FileName = "Фикх финансовых отношений — 2 том.docx"
 		return c.Send(docx)
-	})
-
-	b.Handle(&fzhTKhomArab, func(c tele.Context) error {
-		err = c.Notify(tele.UploadingDocument)
-		if err != nil {
-			return err
-		}
-
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Фикх женщин/EQAMO Твой хиджаб, о мусульманка! Абдур Разак аль Бадр.pdf")}
-		pdf.FileName = "EQAMO Твой хиджаб, о мусульманка! Абдур Разак аль Бадр.pdf"
-		return c.Send(pdf)
 	})
 
 	b.Handle(&fikkhBammab, func(c tele.Context) error {
@@ -2821,7 +2837,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Булуг аль-марам Мухсин аль-Бармауи.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Булуг_аль-марам_Мухсин_аль-Бармауи.pdf")}
 		pdf.FileName = "Булуг аль-марам Мухсин аль-Бармауи.pdf"
 		return c.Send(pdf)
 	})
@@ -2832,7 +2848,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Все про шутки в исламе.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Все_про_шутки_в_исламе.pdf")}
 		pdf.FileName = "Все про шутки в исламе.pdf"
 		return c.Send(pdf)
 	})
@@ -2843,7 +2859,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Жемчужина фикха.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Жемчужина_фикха.pdf")}
 		pdf.FileName = "Жемчужина фикха.pdf"
 		return c.Send(pdf)
 	})
@@ -2854,7 +2870,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Законоположения зимы аш Шувей’ир.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Законоположения_зимы_аш_Шувеи’ир.docx")}
 		docx.FileName = "Законоположения зимы аш Шувей’ир.docx"
 		return c.Send(docx)
 	})
@@ -2876,7 +2892,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Ключ в ханбалитском фикхе Усойми.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Ключ_в_ханбалитском_фикхе_Усоими.pdf")}
 		pdf.FileName = "Ключ в ханбалитском фикхе Усойми.pdf"
 		return c.Send(pdf)
 	})
@@ -2887,7 +2903,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Лайлат уль Кадр – Ночь Предопределения!!!.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Лаилат_уль_Кадр_–_Ночь_Предопределения!!!.pdf")}
 		pdf.FileName = "Лайлат уль Кадр – Ночь Предопределения!!!.pdf"
 		return c.Send(pdf)
 	})
@@ -2909,7 +2925,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/О праздниках неверующих.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/О_праздниках_неверующих.pdf")}
 		pdf.FileName = "О праздниках неверующих.pdf"
 		return c.Send(pdf)
 	})
@@ -2920,7 +2936,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/О положениях, связанных с поздравлениями.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/О_положениях,_связанных_с_поздравлениями.pdf")}
 		pdf.FileName = "О положениях, связанных с поздравлениями.pdf"
 		return c.Send(pdf)
 	})
@@ -2931,7 +2947,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Обряды похорон.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Обряды_похорон.pdf")}
 		pdf.FileName = "Обряды похорон.pdf"
 		return c.Send(pdf)
 	})
@@ -2942,7 +2958,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Отношение к неверующим.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Отношение_к_неверующим.pdf")}
 		pdf.FileName = "Отношение к неверующим.pdf"
 		return c.Send(pdf)
 	})
@@ -2953,7 +2969,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Положение тазкии в Исламе.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Положение_тазкии_в_Исламе.pdf")}
 		pdf.FileName = "Положение тазкии в Исламе.pdf"
 		return c.Send(pdf)
 	})
@@ -2964,7 +2980,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Положения, связанные со сновидениями.pdf.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Положения,_связанные_со_сновидениями.pdf.pdf")}
 		pdf.FileName = "Положения, связанные со сновидениями.pdf"
 		return c.Send(pdf)
 	})
@@ -2975,7 +2991,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Рукья посредством Корана.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Рукья_посредством_Корана.pdf")}
 		pdf.FileName = "Рукья посредством Корана.pdf"
 		return c.Send(pdf)
 	})
@@ -2986,7 +3002,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Следование мазхабу.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Следование_мазхабу.pdf")}
 		pdf.FileName = "Следование мазхабу.pdf"
 		return c.Send(pdf)
 	})
@@ -2997,7 +3013,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Суждение относительно отпускания бороды ибн Баз.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Суждение_относительно_отпускания_бороды_ибн_Баз.docx")}
 		docx.FileName = "Суждение относительно отпускания бороды ибн Баз.docx"
 		return c.Send(docx)
 	})
@@ -3008,7 +3024,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Умдатуль фикх ибн кудама аль-макдиси.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Умдатуль_фикх_ибн_кудама_аль-макдиси.pdf")}
 		pdf.FileName = "Умдатуль фикх ибн кудама аль-макдиси.pdf"
 		return c.Send(pdf)
 	})
@@ -3019,7 +3035,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Харам и халяль в пище.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Харам_и_халяль_в_пище.pdf")}
 		pdf.FileName = "Харам и халяль в пище.pdf"
 		return c.Send(pdf)
 	})
