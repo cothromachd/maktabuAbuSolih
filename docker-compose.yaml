@@ -23,7 +23,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 190204
       POSTGRES_DB: maktabu_bot
-      TOKEN: 6088172429:AAE3DZF6abqLO-T3k50H5FODg6yi__NWqeQ
+      TOKEN: 6015319906:AAHRSae9CWIdG129ijswMX4Nu2EUxGIAsuQ
     volumes:
       - bot_data:/bot_data
     networks:
