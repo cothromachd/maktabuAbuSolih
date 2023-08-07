@@ -1301,7 +1301,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Таухид_аль-асма_ва-сыфат_в_общем.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/таухид_аль-асма_ва-сыфат_в_общем.pdf")}
 		pdf.FileName = "Таухид аль-асма ва-сыфат в общем.pdf"
 		return c.Send(pdf)
 	})
