@@ -14,7 +14,7 @@ import (
 )
 
 var (
-	welcomeText = `السلام عليكم ورحمة الله وبركات
+	welcomeText = `السلام عليكم ورحمة الله وبركاته
 	какой раздел тебе нужен?`
 	m = make(map[string][2]any)
 	//mFile = make(map[string]*tele.Document)
@@ -389,12 +389,12 @@ func main() {
 	m["Очищение"] = [2]any{"Фикх", fikkhMarkup}
 	m["Поклонение"] = [2]any{"Фикх", fikkhMarkup}
 
-	m["Закят"] = [2]any{"Поклонение", fikkhMarkup}
-	m["Молитва"] = [2]any{"Поклонение", fikkhMarkup}
-	m["Мольба"] = [2]any{"Поклонение", fikkhMarkup}
-	m["Покаяние"] = [2]any{"Поклонение", fikkhMarkup}
-	m["Пост"] = [2]any{"Поклонение", fikkhMarkup}
-	m["Хиджра"] = [2]any{"Поклонение", fikkhMarkup}
+	m["Закят"] = [2]any{"Поклонение", worshipMarkup}
+	m["Молитва"] = [2]any{"Поклонение", worshipMarkup}
+	m["Мольба"] = [2]any{"Поклонение", worshipMarkup}
+	m["Покаяние"] = [2]any{"Поклонение", worshipMarkup}
+	m["Пост"] = [2]any{"Поклонение", worshipMarkup}
+	m["Хиджра"] = [2]any{"Поклонение", worshipMarkup}
 
 	m["Фикх женщин"] = [2]any{"Фикх", fikkhMarkup}
 	m["Финансы"] = [2]any{"Фикх", fikkhMarkup}
@@ -1235,7 +1235,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Блеск_убеждении_Шарх_шеха_аль_Усеимин.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Акыда_в_именах_и_атрибутах/Блеск_убеждении_Шарх_шеиха_аль_Усеимин.pdf")}
 		pdf.FileName = "Блеск убеждений Шарх шейха аль Усеймин.pdf"
 		return c.Send(pdf)
 	})
@@ -1343,7 +1343,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос_имана/Усулю_иман_ат-Тамими_шарх_Шейх_Солих_али-Шеиха.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Вопрос_имана/Усулю_иман_ат-Тамими_шарх_Шеих_Солих_али-Шеиха.pdf")}
 		pdf.FileName = "Усулю иман ат-Тамими шарх Шейх Солих али-Шейха.pdf"
 		return c.Send(pdf)
 	})
@@ -2249,7 +2249,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_Суры_Аль_Ахзаб_шейх_уль_Ислам_Ибн_Таимия.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Тафсир/Тафсир_Суры_Аль_Ахзаб_шеих_уль_Ислам_Ибн_Таимия.pdf")}
 		pdf.FileName = "Тафсир Суры Аль Ахзаб шейх уль Ислам Ибн Таймия.pdf"
 		return c.Send(pdf)
 	})
