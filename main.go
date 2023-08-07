@@ -2552,7 +2552,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничный_намаз.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничныи_намаз.pdf")}
 		pdf.FileName = "Праздничный намаз.pdf"
 		return c.Send(pdf)
 	})
@@ -2563,7 +2563,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничный_намаз_—_адабы_и_ахкамы.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Молитва/Праздничныи_намаз_—_адабы_и_ахкамы.pdf")}
 		pdf.FileName = "Праздничный намаз — адабы и ахкамы.pdf"
 		return c.Send(pdf)
 	})
@@ -2667,7 +2667,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Пост_в_6_дней_шавваля.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Поклонение/Пост/Пост_в_6_днеи_шавваля.docx")}
 		docx.FileName = "Пост в 6 дней шавваля.docx"
 		return c.Send(docx)
 	})
@@ -2815,7 +2815,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх_финансовых_отношений_-_1_том.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх_финансовых_отношении_-_1_том.pdf")}
 		pdf.FileName = "Фикх финансовых отношений — 1 том.pdf"
 		return c.Send(pdf)
 	})
@@ -2826,7 +2826,7 @@ func main() {
 			return err
 		}
 
-		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх_финансовых_отношений_-_2_том.docx")}
+		docx := &tele.Document{File: tele.FromDisk("./media/Фикх/Финансы/Фикх_финансовых_отношении_-_2_том.docx")}
 		docx.FileName = "Фикх финансовых отношений — 2 том.docx"
 		return c.Send(docx)
 	})
