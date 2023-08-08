@@ -1568,7 +1568,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Убеждения_приверженцев_сунны_и_единой_общины.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Акыда/Книги_по_основам_акыды_и_манхаджа/Убеждения_приверженцев_сунны_и_единои_общины.pdf")}
 		pdf.FileName = "Убеждения приверженцев сунны и единой общины.pdf"
 		return c.Send(pdf)
 	})
@@ -2980,7 +2980,7 @@ func main() {
 			return err
 		}
 
-		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Положения,_связанные_со_сновидениями.pdf.pdf")}
+		pdf := &tele.Document{File: tele.FromDisk("./media/Фикх/Положения,_связанные_со_сновидениями.pdf")}
 		pdf.FileName = "Положения, связанные со сновидениями.pdf"
 		return c.Send(pdf)
 	})
